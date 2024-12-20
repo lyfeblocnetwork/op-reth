@@ -1,0 +1,189 @@
+[workspace.package]
+version = "0.0.0"
+edition = "2021"
+rust-version = "1.82"
+authors = []
+license = "MIT OR Apache-2.0"
+repository = "https://github.com/lyfeblocnetwork/op-reth"
+keywords = ["ethereum", "crypto"]
+categories = ["cryptography", "cryptography::cryptocurrencies"]
+
+[workspace]
+resolver = "2"
+members = ["bin/*", "crates/*"]
+default-members = ["bin/hera"]
+
+[profile.release]
+lto = "thin"
+panic = "unwind"
+strip = "debuginfo"
+codegen-units = 1
+incremental = false
+
+[workspace.dependencies]
+# Workspace
+ser = { path = "crates/ser" }
+op-net = { path = "crates/net" }
+rollup = { path = "crates/rollup" }
+kona-derive-local = { path = "crates/derive" }
+
+# anton-rs
+superchain = { version = "0.9.3", default-features = false }
+kona-derive = { version = "0.0.4", default-features = true }
+kona-derive-alloy = { version = "0.0.1", default-features = true }
+
+# Alloy
+alloy-rlp = { version = "0.3.9", default-features = false }
+alloy-eips = { version = "0.5.4", default-features = false }
+alloy-signer = { version = "0.5.4", default-features = false }
+alloy-network = { version = "0.5.4", default-features = false }
+alloy-provider = { version = "0.5.4", default-features = false }
+alloy-contract = { version = "0.5.4", default-features = false }
+alloy-transport = { version = "0.5.4", default-features = false }
+alloy-rpc-types = { version = "0.5.4", default-features = false }
+alloy-consensus = { version = "0.5.4", default-features = false }
+alloy-primitives = { version = "0.8.9", default-features = false }
+alloy-rpc-client = { version = "0.5.4", default-features = false }
+alloy-rpc-types-eth = { version = "0.5.4", default-features = false }
+alloy-transport-http = { version = "0.5.4", default-features = false }
+alloy-rpc-types-engine = { version = "0.5.4", default-features = false }
+
+# Op Alloy
+op-alloy-genesis = { version = "0.5.1", default-features = false }
+op-alloy-provider = { version = "0.5.1", default-features = false }
+op-alloy-protocol = { version = "0.5.1", default-features = false }
+op-alloy-consensus = { version = "0.5.1", default-features = false }
+op-alloy-rpc-types = { version = "0.5.1", default-features = false }
+op-alloy-rpc-jsonrpsee = { version = "0.5.1", default-features = false }
+op-alloy-rpc-types-engine = { version = "0.5.1", default-features = false }
+
+# Reth
+reth = { git = "https://github.com/paradigmxyz/reth", rev = "2fba3c0" }
+reth-exex = { git = "https://github.com/paradigmxyz/reth", rev = "2fba3c0" }
+reth-node-api = { git = "https://github.com/paradigmxyz/reth", rev = "2fba3c0" }
+reth-node-ethereum = { git = "https://github.com/paradigmxyz/reth", rev = "2fba3c0" }
+reth-execution-types = { git = "https://github.com/paradigmxyz/reth", rev = "2fba3c0" }
+
+# Tokio
+tokio = { version = "1.41", default-features = false }
+
+# Serialization
+serde_json = "1"
+ethereum_ssz = "0.8.0"
+
+# RPC
+jsonrpsee-types = "0.24"
+jsonrpsee = { version = "0.24", default-features = false }
+
+# Networking
+snap = "1.1.1"
+discv5 = "0.8.0"
+libp2p = "0.54.1"
+openssl = "0.10.68"
+libp2p-identity = "0.2.9"
+
+# Testing
+arbtest = "0.3"
+arbitrary = "1"
+
+# Misc
+url = "2.5.2"
+eyre = "0.6.12"
+clap = "4.5.20"
+reqwest = "0.12"
+tracing = "0.1.40"
+thiserror = "1.0"
+lazy_static = "1.5.0"
+futures = "0.3.31"
+async-trait = "0.1.83"
+parking_lot = "0.12.3"
+unsigned-varint = "0.8.0"
+tower = "0.5"
+http-body-util = "0.1.2"
+tracing-subscriber = "0.3.18"
+rand = { version = "0.8.5", default-features = false }
+
+[workspace.metadata.docs.rs]
+all-features = true
+rustdoc-args = ["--cfg", "docsrs"]
+
+[workspace.lints.rustdoc]
+all = "warn"
+
+[workspace.lints.rust]
+missing_debug_implementations = "warn"
+missing_docs = "warn"
+rust-2018-idioms = { level = "deny", priority = -1 }
+unreachable-pub = "warn"
+unused-must-use = "deny"
+
+[workspace.lints.clippy]
+# These are some of clippy's nursery (i.e., experimental) lints that we like.
+# By default, nursery lints are allowed. Some of the lints below have made good
+# suggestions which we fixed. The others didn't have any findings, so we can
+# assume they don't have that many false positives. Let's enable them to
+# prevent future problems.
+branches_sharing_code = "warn"
+clear_with_drain = "warn"
+derive_partial_eq_without_eq = "warn"
+doc_markdown = "warn"
+empty_line_after_doc_comments = "warn"
+empty_line_after_outer_attr = "warn"
+enum_glob_use = "warn"
+equatable_if_let = "warn"
+explicit_into_iter_loop = "warn"
+explicit_iter_loop = "warn"
+flat_map_option = "warn"
+imprecise_flops = "warn"
+iter_on_empty_collections = "warn"
+iter_on_single_items = "warn"
+iter_with_drain = "warn"
+iter_without_into_iter = "warn"
+large_stack_frames = "warn"
+manual_assert = "warn"
+manual_clamp = "warn"
+manual_string_new = "warn"
+match_same_arms = "warn"
+missing_const_for_fn = "warn"
+mutex_integer = "warn"
+naive_bytecount = "warn"
+needless_bitwise_bool = "warn"
+needless_continue = "warn"
+needless_pass_by_ref_mut = "warn"
+nonstandard_macro_braces = "warn"
+or_fun_call = "warn"
+path_buf_push_overwrite = "warn"
+read_zero_byte_vec = "warn"
+redundant_clone = "warn"
+single_char_pattern = "warn"
+string_lit_as_bytes = "warn"
+suboptimal_flops = "warn"
+suspicious_operation_groupings = "warn"
+trailing_empty_array = "warn"
+trait_duplication_in_bounds = "warn"
+transmute_undefined_repr = "warn"
+trivial_regex = "warn"
+tuple_array_conversions = "warn"
+type_repetition_in_bounds = "warn"
+uninhabited_references = "warn"
+unnecessary_struct_initialization = "warn"
+unused_peekable = "warn"
+unused_rounding = "warn"
+use_self = "warn"
+useless_let_if_seq = "warn"
+zero_sized_map_values = "warn"
+
+# These are nursery lints which have findings. Allow them for now. Some are not
+# quite mature enough for use in our codebase and some we don't really want.
+# Explicitly listing should make it easier to fix in the future.
+as_ptr_cast_mut = "allow"
+cognitive_complexity = "allow"
+collection_is_never_read = "allow"
+debug_assert_with_mut_call = "allow"
+fallible_impl_from = "allow"
+future_not_send = "allow"
+needless_collect = "allow"
+non_send_fields_in_send_ty = "allow"
+redundant_pub_crate = "allow"
+significant_drop_in_scrutinee = "allow"
+significant_drop_tightening = "allow"

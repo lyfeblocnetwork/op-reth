@@ -1,0 +1,27 @@
+[package]
+name = "hera"
+version = "0.1.0"
+description = "Hera is a Rust implementation of the OP Stack Rollup Node"
+edition.workspace = true
+rust-version.workspace = true
+authors.workspace = true
+license.workspace = true
+repository.workspace = true
+keywords.workspace = true
+categories.workspace = true
+
+[dependencies]
+# Local Dependencies
+rollup.workspace = true
+
+# Superchain
+superchain.workspace = true
+
+# Workspace
+eyre.workspace = true
+tracing.workspace = true
+clap = { workspace = true, features = ["derive", "env"] }
+tokio = { workspace = true, features = ["rt-multi-thread", "macros"] }
+
+# Workspace Crates
+op-net.workspace = true

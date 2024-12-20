@@ -1,0 +1,23 @@
+[package]
+name = "op-reth"
+version = "0.1.0"
+edition.workspace = true
+rust-version.workspace = true
+authors.workspace = true
+license.workspace = true
+repository.workspace = true
+keywords.workspace = true
+categories.workspace = true
+
+[dependencies]
+# Local Dependencies
+rollup.workspace = true
+
+# Workspace
+eyre.workspace = true
+tracing.workspace = true
+clap = { workspace = true, features = ["derive", "env"] }
+
+# Reth Dependencies
+reth.workspace = true
+reth-node-ethereum.workspace = true

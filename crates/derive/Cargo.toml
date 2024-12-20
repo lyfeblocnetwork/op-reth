@@ -1,0 +1,36 @@
+[package]
+name = "kona-derive-local"
+description = "kona-derive with local trait implementations"
+version = "0.0.0"
+edition.workspace = true
+authors.workspace = true
+license.workspace = true
+keywords.workspace = true
+repository.workspace = true
+categories.workspace = true
+rust-version.workspace = true
+
+[dependencies]
+# Alloy
+alloy-rlp.workspace = true
+alloy-eips.workspace = true
+alloy-signer.workspace = true
+alloy-consensus.workspace = true
+alloy-primitives = { workspace = true, features = ["map"] }
+
+# Op Alloy
+op-alloy-protocol.workspace = true
+
+# Kona
+kona-derive.workspace = true
+kona-derive-alloy.workspace = true
+
+# Reth
+reth.workspace = true
+
+# Misc
+url.workspace = true
+eyre.workspace = true
+tracing.workspace = true
+async-trait.workspace = true
+parking_lot.workspace = true

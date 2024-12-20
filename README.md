@@ -29,21 +29,6 @@
 [bin/](./bin/) provides a host of binary applications that compose [crates](./crates/).
 
 
-## Development Status
-
-`op-reth` is currently in active development, and is not yet ready for use in production.
-
-
-## Security
-
-Specifications around security are provided in [Security.md](./Security.md).
-
-
-## Contributing
-
-Contributing guidelines are outlined in [Contributing.md](./Contributing.md).
-
-
 ## License
 
 <sup>
